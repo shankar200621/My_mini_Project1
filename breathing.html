@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Breathing Exercise</title>
+  <link rel="stylesheet" href="breathing.css">
+</head>
+<body>
+  <div class="breathing-container">
+    <h1>🫁 Breathe With Us</h1>
+
+    <div class="timer-controls">
+      <label for="duration">Select Duration:</label>
+      <select id="duration">
+        <option value="1">1 Minute</option>
+        <option value="2">2 Minutes</option>
+        <option value="3">3 Minutes</option>
+        <option value="5">5 Minutes</option>
+      </select>
+    </div>
+
+    <div class="circle-wrapper">
+      <div class="circle" id="circle"></div>
+      <p id="instruction">Click Start to begin...</p>
+    </div>
+
+    <div class="controls">
+      <button id="startBtn">Start</button>
+      <button id="stopBtn" disabled>Stop</button>
+    </div>
+
+    <div id="timeLeft"></div>
+  </div>
+
+  <script src="breathing.js"></script>
+</body>
+</html>
