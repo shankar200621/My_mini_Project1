@@ -278,3 +278,284 @@ body {
   object-fit: contain;
   border-radius: 12px;
 }
+=======
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to top right, #d6e6ff, #fafaff);
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* Navigation Bar */
+.navbar {
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(5px);
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #5c80bc;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  color: #5c80bc;
+}
+
+/* Hero Section */
+.landing-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  background-color: #fafdff;
+}
+
+.hero-container {
+  display: flex;
+  max-width: 1200px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.hero-text {
+  flex: 1;
+  min-width: 300px;
+  padding-right: 40px;
+}
+
+.hero-text h1 {
+  font-size: 2.5rem;
+  color: #4b7fa1;
+}
+
+.highlight {
+  color: #3e62a8;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  margin: 20px 0;
+}
+
+.btn.cta {
+  display: inline-block;
+  background-color: #5c80bc;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+}
+
+.btn.cta:hover {
+  background-color: #3e62a8;
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Intro Section */
+.introduction {
+  padding: 60px 20px;
+  background: #eef6fc;
+}
+
+.intro-content {
+  display: flex;
+  max-width: 1200px;
+  margin: auto;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.intro-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.intro-text h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #4b7fa1;
+}
+
+.intro-text p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #444;
+}
+
+.intro-image img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+/* Features Section */
+.features {
+  padding: 60px 20px;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  background: #fafdff;
+  flex-wrap: wrap;
+}
+
+.feature-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 280px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  text-align: center;
+  transition: 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #5c80bc;
+}
+
+.feature-card p {
+  margin-bottom: 10px;
+}
+
+.feature-card a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #5c80bc;
+  color: white;
+  border-radius: 20px;
+  text-decoration: none;
+}
+
+/* Footer */
+.footer {
+  padding: 30px;
+  text-align: center;
+  background-color: #f0f7ff;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Video Button Section */
+.intro-video {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.intro-video button {
+  background-color: #3e62a8;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.intro-video button:hover {
+  background-color: #2e4f91;
+}
+
+/* Optional subtle animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
+
+.hero-image img {
+  animation: float 6s ease-in-out infinite;
+}
+/* === Hero Container Flex Layout === */
+.hero-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  gap: 40px;
+}
+
+.hero-text {
+  flex: 1;
+  min-width: 320px;
+  text-align: left;
+}
+
+.hero-text h1 {
+  font-size: 2.4em;
+  color: #4b7fa1;
+  margin-bottom: 10px;
+}
+
+.hero-text p {
+  font-size: 1.1em;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.hero-text .btn.cta {
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.intro-video {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* === Hero Image Resize === */
+.hero-image {
+  flex: 1;
+  min-width: 320px;
+  text-align: center;
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 12px;
+}
