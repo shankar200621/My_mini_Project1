@@ -1,126 +1,121 @@
-/* checkin.css - Clean & modern check-in UI */
-
+/* General Layout */
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to right, #dfe9f3, #ffffff);
   margin: 0;
-  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #f0fcff, #e0f7fa);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  color: #333;
 }
 
-.container {
+/* Main container */
+.checkin-container {
   background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
   width: 90%;
-  max-width: 500px;
   text-align: center;
-  position: relative;
 }
 
+/* Progress Bar */
+.progress-bar {
+  width: 100%;
+  background-color: #eee;
+  height: 8px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+#progress-fill {
+  height: 100%;
+  width: 0%;
+  background-color: #45b6b0;
+  transition: width 0.3s ease-in-out;
+}
+
+/* Question Text */
 #question {
-  font-size: 1.4em;
-  margin-bottom: 20px;
-  color: #445b78;
-}
-
-#emoji-options {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #0b6866;
   margin-bottom: 30px;
 }
 
+/* Answer Buttons */
+.option-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
 .option-btn {
+  background-color: #e0f2f1;
+  color: #00695c;
+  border: 2px solid transparent;
   padding: 12px 20px;
-  border: none;
-  border-radius: 25px;
-  background-color: #e0ebf9;
-  color: #333;
-  font-size: 1em;
+  border-radius: 12px;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .option-btn:hover {
-  background-color: #d0def0;
+  background-color: #b2dfdb;
 }
 
 .option-btn.selected {
-  background-color: #4f7cac;
+  background-color: #4db6ac;
   color: white;
-  font-weight: bold;
+  border-color: #00796b;
 }
 
-#next-btn {
-  background-color: #4f7cac;
+/* Navigation Buttons */
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.nav-btn {
+  padding: 10px 20px;
+  background-color: #45b6b0;
   color: white;
-  padding: 10px 24px;
   border: none;
-  border-radius: 25px;
-  font-size: 1em;
+  border-radius: 10px;
+  font-size: 0.95rem;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background-color 0.3s ease;
 }
 
-#next-btn:disabled {
-  background-color: #9cb4cc;
+.nav-btn:disabled {
+  background-color: #b2dfdb;
   cursor: not-allowed;
 }
 
-.progress-bar {
-  width: 100%;
-  height: 10px;
-  background-color: #e6ecf3;
-  border-radius: 5px;
-  overflow: hidden;
-  margin-bottom: 25px;
+.nav-btn:hover:not(:disabled) {
+  background-color: #319792;
 }
 
-#progress-fill {
-  height: 100%;
-  background-color: #4f7cac;
-  width: 0%;
-  transition: width 0.3s ease;
-}
-
+/* Final Result */
 .final-result {
-  font-size: 1.1em;
   margin-top: 20px;
+  font-size: 1.1rem;
   color: #333;
-  line-height: 1.6;
 }
 
 .final-result h3 {
-  color: #4f7cac;
-  margin-bottom: 10px;
+  color: #0b6866;
 }
 
 .suggestions {
-  background-color: #f0f6fb;
+  margin-top: 10px;
+  text-align: left;
+  background: #f9fafa;
   padding: 15px;
-  border-radius: 10px;
-  margin-top: 20px;
-}
-
-.suggestions h4 {
-  margin-bottom: 10px;
-  color: #3b5b81;
-}
-
-@media (max-width: 600px) {
-  .container {
-    padding: 20px;
-  }
-  #question {
-    font-size: 1.2em;
-  }
-  .option-btn {
-    font-size: 0.95em;
-  }
+  border-radius: 12px;
+  color: #444;
 }
