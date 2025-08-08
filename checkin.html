@@ -2,26 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mental Health Check-In</title>
   <link rel="stylesheet" href="checkin.css" />
-  <script src="checkin.js" defer></script>
 </head>
 <body>
   <div class="checkin-container">
-    <h2 class="checkin-title">🧠 How Are You Feeling Today?</h2>
+    <div class="question-box">
+      <div class="progress-bar">
+        <div id="progress-fill"></div>
+      </div>
+      <h2 id="question">Loading question...</h2>
+      
+      <!-- Option buttons container -->
+      <div id="options" class="option-buttons"></div>
 
-    <div class="progress-bar">
-      <div id="progress-fill" class="progress-fill"></div>
-    </div>
-
-    <div class="question" id="question">Loading question...</div>
-    
-    <div class="emoji-options" id="emoji-options"></div>
-
-    <div class="button-row">
-      <button id="next-btn" disabled>Next</button>
+      <!-- Navigation buttons -->
+      <div class="navigation-buttons">
+        <button id="back-btn" class="nav-btn">← Back</button>
+        <button id="skip-btn" class="nav-btn">Skip</button>
+        <button id="next-btn" class="nav-btn" disabled>Next →</button>
+      </div>
     </div>
   </div>
+
+  <script src="checkin.js"></script>
 </body>
 </html>
