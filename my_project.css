@@ -21,7 +21,7 @@ body {
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 3rem;
   font-weight: bold;
   color: #5c80bc;
 }
@@ -278,5 +278,6 @@ body {
   object-fit: contain;
   border-radius: 12px;
 }
+
 
 
