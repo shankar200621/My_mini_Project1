@@ -1,38 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Breathing Exercise</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guided Breathing - MindCare</title>
+  <meta name="description" content="Interactive breathing exercises to help you relax and find calm." />
+  <link rel="stylesheet" href="my_project.css">
   <link rel="stylesheet" href="breathing.css">
 </head>
+
 <body>
-  <div class="breathing-container">
-    <h1>🫁 Breathe With Us</h1>
+  <a class="skip-link" href="#main-content">Skip to breathing exercises</a>
+  <nav class="navbar">
+    <div class="logo" aria-label="MindCare home">🧠 MindCare</div>
+    <ul role="list" aria-label="Primary">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="checkin.html">Check-In</a></li>
+      <li><a href="mood.html">Mood Tracker</a></li>
+      <li><a href="mood-game2.html">Games</a></li>
+      <li><a href="info.html">More About Mental Health</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+      🌙
+    </button>
+  </nav>
 
-    <div class="timer-controls">
-      <label for="duration">Select Duration:</label>
-      <select id="duration">
-        <option value="1">1 Minute</option>
-        <option value="2">2 Minutes</option>
-        <option value="3">3 Minutes</option>
-        <option value="5">5 Minutes</option>
-      </select>
+  <main id="main-content" class="page" tabindex="-1">
+    <div class="breathing-container">
+      <header class="breathing-header">
+        <h1>Guided Breathing</h1>
+        <p>Follow the prompts to calm your mind and find peace.</p>
+      </header>
+
+      <div class="breathing-exercises">
+        <!-- Interactive Breathing Circle -->
+        <div class="breathing-card">
+          <h2>🌬️ Interactive Breathing</h2>
+          <p>Click to start a calming breathing exercise</p>
+          <div class="breathing-circle" id="breathing-circle">
+            <div class="breathing-text" id="breathing-text">Click to start</div>
+          </div>
+          <div class="breathing-controls">
+            <button class="game-btn" id="breathing-start">Start Breathing</button>
+            <button class="game-btn" id="breathing-stop" style="display: none;">Stop</button>
+          </div>
+        </div>
+
+        <!-- Traditional Timer-based Breathing -->
+        <div class="breathing-card">
+          <h2>⏱️ Timer Breathing</h2>
+          <p>Set a duration and follow the guided breathing</p>
+          <div class="controls">
+            <label for="duration">Duration</label>
+            <select id="duration">
+              <option value="1">1 minute</option>
+              <option value="3" selected>3 minutes</option>
+              <option value="5">5 minutes</option>
+            </select>
+            <button id="startBtn">Start</button>
+            <button id="stopBtn">Stop</button>
+            <button id="resumeBtn">Resume</button>
+            <button id="resetBtn" class="reset">Reset</button>
+          </div>
+
+          <h3 id="breathText">Ready?</h3>
+
+          <div class="circle-container">
+            <div class="circle"></div>
+          </div>
+
+          <p>Elapsed</p>
+          <div id="timer">00:00</div>
+
+          <p class="instructions">
+            Box breathing (4s inhale • 4s hold • 4s exhale • 4s hold)
+          </p>
+        </div>
+      </div>
     </div>
+  </main>
 
-    <div class="circle-wrapper">
-      <div class="circle" id="circle"></div>
-      <p id="instruction">Click Start to begin...</p>
-    </div>
+  <footer class="footer">
+    <p>© 2025 MindCare. You are not alone 💚</p>
+  </footer>
 
-    <div class="controls">
-      <button id="startBtn">Start</button>
-      <button id="stopBtn" disabled>Stop</button>
-    </div>
-
-    <div id="timeLeft"></div>
-  </div>
-
+  <script src="index.js"></script>
   <script src="breathing.js"></script>
+  <script src="breathing-interactive.js"></script>
 </body>
+
 </html>
