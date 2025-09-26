@@ -1,97 +1,214 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to right, #e0f7fa, #f0faff);
-  height: 100vh;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
+/* Breathing Page Styles */
 .breathing-container {
-  text-align: center;
-  background: white;
-  padding: 30px 40px;
-  border-radius: 16px;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-h1 {
-  color: #00796b;
+.breathing-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.breathing-header h1 {
+  font-size: 2.5rem;
+  color: #4b7fa1;
+  margin-bottom: 10px;
+}
+
+.breathing-header p {
+  font-size: 1.1rem;
+  color: #6b7280;
+}
+
+.breathing-exercises {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+.breathing-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  text-align: center;
+}
+
+.breathing-card h2 {
+  font-size: 1.5rem;
+  color: #4b7fa1;
+  margin-bottom: 8px;
+}
+
+.breathing-card p {
+  color: #6b7280;
   margin-bottom: 20px;
 }
 
-.timer-controls {
-  margin-bottom: 15px;
-}
-
-.timer-controls label {
-  font-weight: bold;
-  color: #333;
-  margin-right: 10px;
-}
-
-select {
-  padding: 6px 10px;
-  font-size: 14px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-.circle-wrapper {
-  position: relative;
-  height: 250px;
-  margin-bottom: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.circle {
-  width: 120px;
-  height: 120px;
-  background-color: #b2dfdb;
+/* Interactive Breathing Circle */
+.breathing-circle {
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
-  transition: transform 4s ease-in-out;
-  z-index: 1;
-}
-
-#instruction {
-  margin-top: 20px;
-  font-size: 18px;
-  color: #555;
-  z-index: 2;
-  position: relative;
-}
-
-
-.controls {
-  margin-top: 20px;
-}
-
-.controls button {
-  padding: 10px 20px;
-  font-size: 16px;
-  margin: 0 10px;
-  background-color: #00796b;
-  color: white;
-  border: none;
-  border-radius: 8px;
+  background: linear-gradient(135deg, #4ecdc4, #44a08d);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+  transition: transform 0.3s ease;
+  box-shadow: 0 8px 25px rgba(78, 205, 196, 0.3);
   cursor: pointer;
 }
 
-.controls button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+.breathing-text {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
 }
 
-#timeLeft {
-  margin-top: 15px;
-  font-weight: bold;
-  color: #444;
-  font-size: 16px;
+.breathing-controls {
+  text-align: center;
+  margin-top: 20px;
 }
+
+/* Game Buttons */
+.game-btn {
+  background: #4b7fa1;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  margin: 0 5px;
+}
+
+.game-btn:hover {
+  background: #3e6b8a;
+  transform: translateY(-1px);
+}
+
+.game-btn:active {
+  transform: translateY(0);
+}
+
+.controls {
+  margin-bottom: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  padding: 8px 15px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#startBtn {
+  background: #009688;
+  color: #fff;
+}
+
+#startBtn:hover {
+  background: #00796b;
+}
+
+#stopBtn {
+  background: #f44336;
+  color: #fff;
+}
+
+#stopBtn:hover {
+  background: #d32f2f;
+}
+
+#resumeBtn {
+  background: #008CBA;
+  color: #fff;
+}
+
+#resumeBtn:hover {
+  background: #006f99;
+}
+
+#resetBtn {
+  background: #ccc;
+  color: #000;
+}
+
+#resetBtn:hover {
+  background: #999;
+}
+
+.circle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+  min-height: 220px;
+  /* keeps spacing */
+}
+
+.circle {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: rgba(0, 150, 136, 0.2);
+  border: 3px solid #009688;
+  transition: transform 4s ease-in-out;
+}
+
+#breathText {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #006666;
+}
+
+#timer {
+  font-weight: bold;
+  font-size: 20px;
+  color: #003333;
+}
+
+.instructions {
+  font-size: 14px;
+  color: #666;
+  margin-top: 15px;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .breathing-exercises {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Dark Mode Styles */
+[data-theme="dark"] .breathing-card {
+  background: #0e1726;
+  border-color: #1e293b;
+}
+
+[data-theme="dark"] .breathing-header h1 {
+  color: #bfdbfe;
+}
+
+[data-theme="dark"] .breathing-card h2 {
+  color: #bfdbfe;
+}
+
+[data-theme="dark"] .breathing-card p {
+  color: #9ca3af;
+}
+
