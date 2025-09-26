@@ -1,31 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mental Health Check-In</title>
+  <link rel="stylesheet" href="my_project.css" />
   <link rel="stylesheet" href="checkin.css" />
 </head>
-<body>
-  <div class="checkin-container">
-    <div class="question-box">
-      <div class="progress-bar">
-        <div id="progress-fill"></div>
-      </div>
-      <h2 id="question">Loading question...</h2>
-      
-      <!-- Option buttons container -->
-      <div id="options" class="option-buttons"></div>
 
-      <!-- Navigation buttons -->
-      <div class="navigation-buttons">
-        <button id="back-btn" class="nav-btn">← Back</button>
-        <button id="skip-btn" class="nav-btn">Skip</button>
-        <button id="next-btn" class="nav-btn" disabled>Next →</button>
+<body>
+  <a class="skip-link" href="#main-content">Skip to check-in</a>
+  <nav class="navbar">
+    <div class="logo" aria-label="MindCare home">🧠 MindCare</div>
+    <ul role="list" aria-label="Primary">
+      <li><a href="index.html">Home</a></li>
+    </ul>
+  </nav>
+  <main id="main-content" class="page" tabindex="-1">
+    <h1 class="page-title">Check-In</h1>
+    <div class="checkin-container" role="region" aria-labelledby="question">
+      <div class="question-box">
+        <div class="progress">
+          <div class="progress-bar" aria-hidden="true">
+            <div id="progress-fill"></div>
+          </div>
+          <div class="progress-meta" aria-live="polite">
+            <span id="progress-label">&nbsp;</span>
+          </div>
+        </div>
+        <h2 id="question" class="question-text" aria-live="polite">Loading question...</h2>
+
+        <!-- Option buttons container -->
+        <div id="options" class="option-buttons" role="group" aria-labelledby="question"></div>
+
+        <!-- Navigation buttons -->
+        <div class="navigation-buttons">
+          <button id="back-btn" class="nav-btn" type="button">← Back</button>
+          <button id="skip-btn" class="nav-btn" type="button">Skip</button>
+          <button id="next-btn" class="nav-btn" type="button" disabled>Next →</button>
+        </div>
+        <div id="sr-status" class="visually-hidden" aria-live="polite"></div>
       </div>
     </div>
-  </div>
+  </main>
 
   <script src="checkin.js"></script>
 </body>
+
 </html>
