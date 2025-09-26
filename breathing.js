@@ -1,64 +1,82 @@
-const circle = document.getElementById('circle');
-const instruction = document.getElementById('instruction');
-const startBtn = document.getElementById('startBtn');
-const stopBtn = document.getElementById('stopBtn');
-const durationSelect = document.getElementById('duration');
-const timeLeft = document.getElementById('timeLeft');
+let startBtn = document.getElementById("startBtn");
+let stopBtn = document.getElementById("stopBtn");
+let resumeBtn = document.getElementById("resumeBtn");
+let resetBtn = document.getElementById("resetBtn");
+let breathText = document.getElementById("breathText");
+let circle = document.querySelector(".circle");
+let timerDisplay = document.getElementById("timer");
+let durationSelect = document.getElementById("duration");
 
 let interval;
-let timerInterval;
-let step = 0;
-let remainingTime = 0;
+let elapsedInterval;
+let paused = false;
+let elapsedTime = 0;
+let totalTime = 0;
+let currentStep = 0;
 
 const steps = [
-  { text: 'Inhale deeply...', scale: 1.3 },
-  { text: 'Hold your breath...', scale: 1.3 },
-  { text: 'Exhale slowly...', scale: 1 }
+  { text: "Inhale", scale: 1.3 },
+  { text: "Hold", scale: 1.3 },
+  { text: "Exhale", scale: 1.0 },
+  { text: "Hold", scale: 1.0 }
 ];
 
-function breathe() {
-  const current = steps[step];
-  instruction.textContent = current.text;
-  circle.style.transform = `scale(${current.scale})`;
-  step = (step + 1) % steps.length;
-}
-
-function updateTimerDisplay() {
-  const mins = Math.floor(remainingTime / 60);
-  const secs = remainingTime % 60;
-  timeLeft.textContent = `Time left: ${mins}m ${secs < 10 ? '0' : ''}${secs}s`;
-}
-
 function startBreathing() {
-  step = 0;
-  breathe();
-  interval = setInterval(breathe, 4000);
+  resetBreathing(); // clear before start
+  totalTime = parseInt(durationSelect.value) * 60;
+  paused = false;
+  elapsedInterval = setInterval(updateElapsed, 1000);
+  runCycle();
+}
 
-  const selectedMinutes = parseInt(durationSelect.value);
-  remainingTime = selectedMinutes * 60;
-  updateTimerDisplay();
-
-  timerInterval = setInterval(() => {
-    remainingTime--;
-    updateTimerDisplay();
-    if (remainingTime <= 0) {
-      stopBreathing();
+function runCycle() {
+  interval = setInterval(() => {
+    if (!paused) {
+      let step = steps[currentStep];
+      breathText.textContent = step.text;
+      circle.style.transform = `scale(${step.scale})`;
+      currentStep = (currentStep + 1) % steps.length;
     }
-  }, 1000);
+  }, 4000); // 4s per step
+}
 
-  startBtn.disabled = true;
-  stopBtn.disabled = false;
+function updateElapsed() {
+  if (!paused) {
+    elapsedTime++;
+    let mins = String(Math.floor(elapsedTime / 60)).padStart(2, "0");
+    let secs = String(elapsedTime % 60).padStart(2, "0");
+    timerDisplay.textContent = `${mins}:${secs}`;
+
+    if (elapsedTime >= totalTime) {
+      stopBreathing();
+      breathText.textContent = "Session Complete 🎉";
+    }
+  }
 }
 
 function stopBreathing() {
-  clearInterval(interval);
-  clearInterval(timerInterval);
-  instruction.textContent = 'Click Start to begin...';
-  timeLeft.textContent = '';
-  circle.style.transform = 'scale(1)';
-  startBtn.disabled = false;
-  stopBtn.disabled = true;
+  paused = true;
+  breathText.textContent = "Paused ⏸️";
 }
 
-startBtn.addEventListener('click', startBreathing);
-stopBtn.addEventListener('click', stopBreathing);
+function resumeBreathing() {
+  paused = false;
+}
+
+function resetBreathing() {
+  clearInterval(interval);
+  clearInterval(elapsedInterval);
+  elapsedTime = 0;
+  timerDisplay.textContent = "00:00";
+  breathText.textContent = "Ready?";
+  circle.style.transform = "scale(1)";
+  paused = false;
+  currentStep = 0;
+}
+
+startBtn.addEventListener("click", startBreathing);
+stopBtn.addEventListener("click", stopBreathing);
+resumeBtn.addEventListener("click", resumeBreathing);
+resetBtn.addEventListener("click", resetBreathing);
+
+
