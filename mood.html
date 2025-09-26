@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mood Tracker - MindCare</title>
+  <meta name="description" content="Track your daily mood and emotional wellbeing with our comprehensive mood tracker." />
+  <link rel="stylesheet" href="my_project.css">
+  <link rel="stylesheet" href="mood.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to mood tracker</a>
+  <nav class="navbar">
+    <div class="logo" aria-label="MindCare home">🧠 MindCare</div>
+    <ul role="list" aria-label="Primary">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="checkin.html">Check-In</a></li>
+      <li><a href="breathing.html">Breathing</a></li>
+      <li><a href="mood-game2.html">Games</a></li>
+      <li><a href="info.html">More About Mental Health</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+      🌙
+    </button>
+  </nav>
+
+  <main id="main-content" class="page" tabindex="-1">
+    <div class="mood-container">
+      <header class="mood-header">
+        <h1>🌸 Mood Tracker</h1>
+        <p>Track your daily emotions and discover patterns in your wellbeing</p>
+      </header>
+
+      <!-- Quick Mood Entry -->
+      <section class="mood-entry-section" aria-labelledby="mood-entry-title">
+        <h2 id="mood-entry-title">How are you feeling today?</h2>
+        <div class="mood-selector">
+          <div class="mood-options" role="group" aria-label="Select your mood">
+            <button class="mood-btn" data-mood="😊" data-value="5" aria-label="Very happy">
+              <span class="mood-emoji">😊</span>
+              <span class="mood-label">Great</span>
+            </button>
+            <button class="mood-btn" data-mood="😌" data-value="4" aria-label="Good">
+              <span class="mood-emoji">😌</span>
+              <span class="mood-label">Good</span>
+            </button>
+            <button class="mood-btn" data-mood="😐" data-value="3" aria-label="Neutral">
+              <span class="mood-emoji">😐</span>
+              <span class="mood-label">Okay</span>
+            </button>
+            <button class="mood-btn" data-mood="😔" data-value="2" aria-label="Sad">
+              <span class="mood-emoji">😔</span>
+              <span class="mood-label">Down</span>
+            </button>
+            <button class="mood-btn" data-mood="😢" data-value="1" aria-label="Very sad">
+              <span class="mood-emoji">😢</span>
+              <span class="mood-label">Struggling</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="mood-details">
+          <div class="note-section">
+            <label for="mood-note">Add a note about your day (optional)</label>
+            <textarea id="mood-note" placeholder="What's contributing to how you feel today?"></textarea>
+          </div>
+          
+          <div class="activities-section">
+            <label>What activities did you do today?</label>
+            <div class="activity-tags">
+              <button class="activity-tag" data-activity="exercise">🏃 Exercise</button>
+              <button class="activity-tag" data-activity="work">💼 Work</button>
+              <button class="activity-tag" data-activity="social">👥 Social</button>
+              <button class="activity-tag" data-activity="hobby">🎨 Hobby</button>
+              <button class="activity-tag" data-activity="rest">😴 Rest</button>
+              <button class="activity-tag" data-activity="nature">🌿 Nature</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mood-actions">
+          <button class="btn cta" id="save-mood" disabled>Save Today's Mood</button>
+          <button class="btn" id="skip-today">Skip Today</button>
+        </div>
+      </section>
+
+      <!-- Today's Entry Display -->
+      <section class="today-entry" aria-labelledby="today-title">
+        <h2 id="today-title">Today's Entry</h2>
+        <div id="today-display" class="entry-display">
+          <div class="no-entry">
+            <span class="no-entry-icon">📝</span>
+            <p>No entry yet for today</p>
+            <small>Track your mood to see it here</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- Analytics Dashboard -->
+      <section class="analytics" aria-labelledby="analytics-title">
+        <h2 id="analytics-title">Your Mood Insights</h2>
+        <div class="analytics-grid">
+          <div class="analytics-card">
+            <h3>Weekly Trend</h3>
+            <div class="chart-container">
+              <canvas id="weekly-chart"></canvas>
+            </div>
+          </div>
+          
+          <div class="analytics-card">
+            <h3>Mood Distribution</h3>
+            <div class="chart-container">
+              <canvas id="mood-distribution"></canvas>
+            </div>
+          </div>
+          
+          <div class="analytics-card">
+            <h3>This Week's Summary</h3>
+            <div id="weekly-summary" class="summary-content">
+              <div class="summary-stat">
+                <span class="stat-value" id="avg-mood">--</span>
+                <span class="stat-label">Average Mood</span>
+              </div>
+              <div class="summary-stat">
+                <span class="stat-value" id="days-tracked">0</span>
+                <span class="stat-label">Days Tracked</span>
+              </div>
+              <div class="summary-stat">
+                <span class="stat-value" id="streak">0</span>
+                <span class="stat-label">Day Streak</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Past Entries -->
+      <section class="past-entries" aria-labelledby="past-title">
+        <div class="entries-header">
+          <h2 id="past-title">Past Entries</h2>
+          <div class="entries-controls">
+            <button class="btn" id="export-data">Export Data</button>
+            <button class="btn danger" id="clear-data">Clear All Data</button>
+          </div>
+        </div>
+        
+        <div class="entries-filter">
+          <label for="date-filter">Filter by date:</label>
+          <select id="date-filter">
+            <option value="all">All time</option>
+            <option value="week">This week</option>
+            <option value="month">This month</option>
+            <option value="3months">Last 3 months</option>
+          </select>
+        </div>
+        
+        <div id="entries-list" class="entries-list"></div>
+        <button class="btn" id="load-more" style="display: none;">Load More</button>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 MindCare. You are not alone 💚</p>
+  </footer>
+
+  <script src="index.js"></script>
+  <script src="mood.js"></script>
+</body>
+</html>
