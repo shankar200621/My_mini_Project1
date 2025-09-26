@@ -1,22 +1,44 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mental Health & Wellbeing Corner</title>
+  <meta name="description"
+    content="MindCare helps you slow down, check in, and care for your mental wellbeing with breathing tools, a mood tracker, and helpful information." />
+  <meta name="theme-color" content="#0ea5e9" />
+  <meta property="og:title" content="MindCare — Mental Health & Wellbeing Corner" />
+  <meta property="og:description" content="Your space to pause, reflect, and strengthen your emotional wellbeing." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var theme = (stored === 'light' || stored === 'dark') ? stored : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) { }
+    })();
+  </script>
   <link rel="stylesheet" href="my_project.css" />
 </head>
+
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <nav class="navbar">
-    <div class="logo">🧠 MindCare</div>
-    <ul>
+    <div class="logo" aria-label="MindCare home">🧠 MindCare</div>
+    <ul role="list" aria-label="Primary">
       <li><a href="checkin.html">Check-In</a></li>
       <li><a href="breathing.html">Breathing</a></li>
       <li><a href="mood.html">Mood Tracker</a></li>
-      <li><a href="info.html">More about Mental health</a></li>
+      <li><a href="mood-game2.html">Games</a></li>
+      <li><a href="info.html">More About Mental Health</a></li>
       <li><a href="login.html" class="login-btn">Login</a></li>
     </ul>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+      🌙
+    </button>
   </nav>
 
   <header class="landing-hero">
@@ -24,56 +46,184 @@
       <div class="hero-text">
         <h1>Welcome to <span class="highlight">MindCare</span></h1>
         <p>Your space to slow down, check in, and care for your mental health.</p>
-        <a href="checkin.html" class="btn cta">Start Check-In</a>
+        <a href="checkin.html" class="btn cta" aria-label="Start your check-in">Start Check-In</a>
 
         <!-- ✅ Embedded Video -->
-    
+        <!-- <video controls class="intro-video">
+          <source src="https://video.pictory.ai/v2/preview/1096224574959895076541754366060207" type="video/mp4">
+          Your browser does not support the video tag.
+        </video> -->
       </div>
 
       <!-- ✅ Updated illustration size -->
       <div class="hero-image">
-        <img src="undraw_mindfulness_v3lv.svg" alt="Mindfulness" />
+        <img src="undraw_mindfulness_v3lv.svg" alt="Illustration of mindfulness and calm" loading="eager" />
       </div>
     </div>
   </header>
 
-  <section class="introduction">
-    <div class="intro-content">
-      <div class="intro-text">
-        <h2>Why This Space Exists</h2>
-        <p>
-          Mental wellbeing matters — but often, we forget to check in with ourselves.<br><br>
-          <strong>MindCare</strong> is your gentle companion designed to help you pause, reflect, and grow stronger emotionally. Whether you’re facing stress, seeking motivation, or simply want to breathe — you're in the right place.
-        </p>
+  <main id="main-content" tabindex="-1">
+    <section class="introduction" aria-labelledby="why-title">
+      <div class="intro-content">
+        <div class="intro-text">
+          <h2 id="why-title">Why This Space Exists</h2>
+          <p>
+            Mental wellbeing matters — but often, we forget to check in with ourselves.<br><br>
+            <strong>MindCare</strong> is your gentle companion designed to help you pause, reflect, and grow stronger
+            emotionally. Whether you’re facing stress, seeking motivation, or simply want to breathe — you're in the
+            right place.
+          </p>
+        </div>
+        <div class="intro-image">
+          <img src="https://i.pinimg.com/736x/f4/de/6a/f4de6a4efa0b9b6410873d0522fc9a3d.jpg"
+            alt="A calming, relaxing illustration" loading="lazy" />
+        </div>
       </div>
-      <div class="intro-image">
-        <img src="https://i.pinimg.com/736x/f4/de/6a/f4de6a4efa0b9b6410873d0522fc9a3d.jpg" alt="Relaxing Illustration" />
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="features">
-    <div class="feature-card">
-      <h3>🌬️ Breathing Space</h3>
-      <p>Practice calming exercises</p>
-      <a href="breathing.html">Try Now</a>
-    </div>
-    <div class="feature-card">
-      <h3>😊 Mood Tracker</h3>
-      <p>Reflect on your emotional patterns</p>
-      <a href="mood.html">Track</a>
-    </div>
-    <div class="feature-card">
-      <h3>More about Mental health </h3>
-      <p>Know more about mental health </p>
-      <a href="info.html">Visit</a>
-    </div>
-  </section>
+    <section class="how-it-works" aria-labelledby="how-title">
+      <div class="container">
+        <h2 id="how-title">How it works</h2>
+        <ol class="steps">
+          <li>
+            <h3>1. Check in</h3>
+            <p>Answer a few quick questions to understand how you’re feeling.</p>
+          </li>
+          <li>
+            <h3>2. Breathe</h3>
+            <p>Use simple breathing tools to calm your body and mind.</p>
+          </li>
+          <li>
+            <h3>3. Learn & grow</h3>
+            <p>Explore tips and resources to support your wellbeing journey.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="testimonials" aria-labelledby="testimonials-title">
+      <div class="container">
+        <h2 id="testimonials-title">What people say</h2>
+        <div class="testimonials-grid">
+          <figure class="testimonial">
+            <blockquote>
+              “MindCare helped me create a simple daily habit to check in with myself.”
+            </blockquote>
+            <figcaption>— Aisha, student</figcaption>
+          </figure>
+          <figure class="testimonial">
+            <blockquote>
+              “The breathing tool is my go-to before meetings. Quick and calming.”
+            </blockquote>
+            <figcaption>— Marco, product manager</figcaption>
+          </figure>
+          <figure class="testimonial">
+            <blockquote>
+              “I love how welcoming it feels. Small steps that actually help.”
+            </blockquote>
+            <figcaption>— Priya, designer</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits" aria-labelledby="benefits-title">
+      <div class="container">
+        <h2 id="benefits-title">Why people use MindCare</h2>
+        <div class="benefits-grid">
+          <div class="benefit">
+            <span class="benefit-icon">⏱️</span>
+            <h3>Fast</h3>
+            <p>1–2 minutes to check in, anywhere, anytime.</p>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">🧩</span>
+            <h3>Simple</h3>
+            <p>Clear steps with small actions you can take today.</p>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">🫶</span>
+            <h3>Supportive</h3>
+            <p>Gentle guidance that meets you where you are.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-secondary" aria-labelledby="cta-title">
+      <div class="container">
+        <h2 id="cta-title">Ready to begin?</h2>
+        <p>Start with a quick check-in — it only takes a minute.</p>
+        <div class="cta-actions">
+          <a href="checkin.html" class="btn cta">Start Check-In</a>
+          <a href="breathing.html" class="btn">Try Breathing</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <h2 id="faq-title">Frequently asked questions</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <h3>
+              <button class="faq-toggle" aria-expanded="false" aria-controls="faq1" id="faq1-button">Is MindCare a
+                replacement for therapy?</button>
+            </h3>
+            <div id="faq1" class="faq-panel" role="region" aria-labelledby="faq1-button" hidden>
+              <p>No. MindCare offers self-care tools and guidance. If you’re in crisis or need clinical support, please
+                reach out to a professional or local helpline.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <h3>
+              <button class="faq-toggle" aria-expanded="false" aria-controls="faq2" id="faq2-button">How long does a
+                check-in take?</button>
+            </h3>
+            <div id="faq2" class="faq-panel" role="region" aria-labelledby="faq2-button" hidden>
+              <p>Usually 1–2 minutes. You can pause anytime and come back when you’re ready.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <h3>
+              <button class="faq-toggle" aria-expanded="false" aria-controls="faq3" id="faq3-button">Do I need an
+                account?</button>
+            </h3>
+            <div id="faq3" class="faq-panel" role="region" aria-labelledby="faq3-button" hidden>
+              <p>No account is required to explore the tools on this site.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" aria-labelledby="features-title">
+      <h2 id="features-title" class="visually-hidden">Features</h2>
+      <div class="feature-card">
+        <h3>🌬️ Breathing Space</h3>
+        <p>Practice calming exercises</p>
+        <a href="breathing.html">Try Now</a>
+      </div>
+      <div class="feature-card">
+        <h3>🎮 Mind Games</h3>
+        <p>Fun activities for mental wellness</p>
+        <a href="mood-game2.html">Play</a>
+      </div>
+      <div class="feature-card">
+        <h3>📖 More About Mental Health</h3>
+        <p>Learn practical tips and insights</p>
+        <a href="info.html">Visit</a>
+      </div>
+    </section>
+  </main>
 
   <footer class="footer">
     <p>© 2025 MindCare. You are not alone 💚</p>
   </footer>
+  <script src="index.js"></script>
+
 </body>
+
 </html>
 
 
