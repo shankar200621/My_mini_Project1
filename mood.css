@@ -1,0 +1,578 @@
+/* Mood Tracker Styles */
+.page {
+  padding-top: 12px;
+}
+
+.mood-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.mood-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.mood-header h1 {
+  font-size: 2.5rem;
+  color: #4b7fa1;
+  margin-bottom: 10px;
+}
+
+.mood-header p {
+  font-size: 1.1rem;
+  color: #6b7280;
+}
+
+/* Mood Entry Section */
+.mood-entry-section {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+}
+
+.mood-entry-section h2 {
+  text-align: center;
+  color: #4b7fa1;
+  margin-bottom: 25px;
+  font-size: 1.5rem;
+}
+
+/* Mood Selector */
+.mood-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mood-btn {
+  background: #f8fafc;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+.mood-btn:hover {
+  background: #e6efff;
+  border-color: #4b7fa1;
+  transform: translateY(-2px);
+}
+
+.mood-btn.selected {
+  background: #4b7fa1;
+  border-color: #4b7fa1;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(75, 127, 161, 0.3);
+}
+
+.mood-emoji {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.mood-label {
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Mood Details */
+.mood-details {
+  margin-bottom: 25px;
+}
+
+.note-section {
+  margin-bottom: 25px;
+}
+
+.note-section label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.note-section textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 15px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 1rem;
+  resize: vertical;
+  transition: border-color 0.2s ease;
+}
+
+.note-section textarea:focus {
+  outline: none;
+  border-color: #4b7fa1;
+}
+
+.activities-section label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.activity-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.activity-tag {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.activity-tag:hover {
+  background: #e2e8f0;
+}
+
+.activity-tag.selected {
+  background: #4b7fa1;
+  border-color: #4b7fa1;
+  color: white;
+}
+
+/* Mood Actions */
+.mood-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.mood-actions .btn {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.mood-actions .btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.mood-actions .btn.cta {
+  background: #4b7fa1;
+  color: white;
+}
+
+.mood-actions .btn.cta:hover:not(:disabled) {
+  background: #3e6b8a;
+  transform: translateY(-1px);
+}
+
+.mood-actions .btn:not(.cta) {
+  background: #f1f5f9;
+  color: #374151;
+  border: 1px solid #cbd5e1;
+}
+
+.mood-actions .btn:not(.cta):hover {
+  background: #e2e8f0;
+}
+
+/* Today's Entry */
+.today-entry {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 25px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+}
+
+.today-entry h2 {
+  color: #4b7fa1;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.entry-display {
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.no-entry {
+  text-align: center;
+  color: #6b7280;
+}
+
+.no-entry-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.entry-card {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 20px;
+  border-left: 4px solid #4b7fa1;
+  width: 100%;
+}
+
+.entry-mood {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.entry-note {
+  color: #374151;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.entry-activities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.activity-badge {
+  background: #e6efff;
+  color: #4b7fa1;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* Analytics */
+.analytics {
+  margin-bottom: 30px;
+}
+
+.analytics h2 {
+  color: #4b7fa1;
+  margin-bottom: 25px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.analytics-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 25px;
+}
+
+.analytics-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+}
+
+.analytics-card h3 {
+  color: #4b7fa1;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.chart-container {
+  position: relative;
+  height: 300px;
+}
+
+.summary-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 20px;
+}
+
+.summary-stat {
+  text-align: center;
+}
+
+.stat-value {
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #4b7fa1;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Past Entries */
+.past-entries {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 25px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+}
+
+.entries-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.entries-header h2 {
+  color: #4b7fa1;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.entries-controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.entries-controls .btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.entries-controls .btn:not(.danger) {
+  background: #f1f5f9;
+  color: #374151;
+  border: 1px solid #cbd5e1;
+}
+
+.entries-controls .btn:not(.danger):hover {
+  background: #e2e8f0;
+}
+
+.entries-controls .btn.danger {
+  background: #ef4444;
+  color: white;
+}
+
+.entries-controls .btn.danger:hover {
+  background: #dc2626;
+}
+
+.entries-filter {
+  margin-bottom: 20px;
+}
+
+.entries-filter label {
+  margin-right: 10px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.entries-filter select {
+  padding: 8px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: white;
+  font-size: 0.9rem;
+}
+
+.entries-list {
+  display: grid;
+  gap: 15px;
+}
+
+.entry-item {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 20px;
+  border-left: 4px solid #4b7fa1;
+  transition: transform 0.2s ease;
+}
+
+.entry-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.entry-date {
+  font-weight: bold;
+  color: #4b7fa1;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.entry-mood-display {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.entry-note-display {
+  color: #374151;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.entry-activities-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .analytics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .mood-options {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .analytics-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Dark Mode Styles */
+[data-theme="dark"] .mood-entry-section,
+[data-theme="dark"] .today-entry,
+[data-theme="dark"] .analytics-card,
+[data-theme="dark"] .past-entries {
+  background: #0e1726;
+  border-color: #1e293b;
+}
+
+[data-theme="dark"] .mood-header h1,
+[data-theme="dark"] .mood-entry-section h2,
+[data-theme="dark"] .today-entry h2,
+[data-theme="dark"] .analytics h2,
+[data-theme="dark"] .entries-header h2 {
+  color: #bfdbfe;
+}
+
+[data-theme="dark"] .mood-header p {
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .mood-btn {
+  background: #1e293b;
+  border-color: #334155;
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .mood-btn:hover {
+  background: #0f172a;
+  border-color: #93c5fd;
+}
+
+[data-theme="dark"] .mood-btn.selected {
+  background: #3b82f6;
+  border-color: #3b82f6;
+}
+
+[data-theme="dark"] .note-section label,
+[data-theme="dark"] .activities-section label {
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .note-section textarea {
+  background: #1e293b;
+  border-color: #334155;
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .note-section textarea:focus {
+  border-color: #93c5fd;
+}
+
+[data-theme="dark"] .activity-tag {
+  background: #1e293b;
+  border-color: #334155;
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .activity-tag:hover {
+  background: #0f172a;
+}
+
+[data-theme="dark"] .activity-tag.selected {
+  background: #3b82f6;
+  border-color: #3b82f6;
+}
+
+[data-theme="dark"] .entry-card {
+  background: #1e293b;
+}
+
+[data-theme="dark"] .entry-note,
+[data-theme="dark"] .entry-note-display {
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .activity-badge {
+  background: #1e293b;
+  color: #93c5fd;
+}
+
+[data-theme="dark"] .analytics-card h3 {
+  color: #bfdbfe;
+}
+
+[data-theme="dark"] .stat-value {
+  color: #93c5fd;
+}
+
+[data-theme="dark"] .stat-label {
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .entry-item {
+  background: #1e293b;
+}
+
+[data-theme="dark"] .entry-date {
+  color: #93c5fd;
+}
+
+[data-theme="dark"] .entries-filter label {
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .entries-filter select {
+  background: #1e293b;
+  border-color: #334155;
+  color: #e5e7eb;
+}
