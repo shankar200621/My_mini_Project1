@@ -1,75 +1,443 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom right, #e8f7ff, #fdfcff);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
+/* Games Page Styles */
+.page {
+  padding-top: 12px;
 }
 
-.game-container {
+.games-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.games-header {
   text-align: center;
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-  max-width: 500px;
-  width: 90%;
+  margin-bottom: 40px;
 }
 
-h1 {
-  color: #31708e;
+.games-header h1 {
+  font-size: 2.5rem;
+  color: #4b7fa1;
   margin-bottom: 10px;
 }
 
-p {
-  color: #555;
-  margin: 8px 0;
+.games-header p {
+  font-size: 1.1rem;
+  color: #6b7280;
 }
 
-.game-board {
+.games-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+.game-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+}
+
+.game-header {
+  margin-bottom: 20px;
+}
+
+.game-header h2 {
+  font-size: 1.5rem;
+  color: #4b7fa1;
+  margin-bottom: 8px;
+}
+
+.game-header p {
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Memory Game Styles */
+.memory-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  gap: 10px;
   margin: 20px 0;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.card {
-  background-color: #def3f8;
-  padding: 30px 0;
-  font-size: 24px;
+.memory-card {
+  aspect-ratio: 1;
+  background: #f3f4f6;
   border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  position: relative;
+  transition: transform 0.2s ease;
 }
 
-.card.flipped, .card.matched {
-  background-color: #a2d4ec;
+.memory-card:hover {
   transform: scale(1.05);
 }
 
-#restart-btn {
-  padding: 10px 20px;
-  background-color: #31708e;
+.memory-card.flipped .card-back {
+  display: none;
+}
+
+.memory-card.flipped .card-front {
+  display: block;
+}
+
+.memory-card.matched {
+  background: #d1fae5;
+  cursor: default;
+}
+
+.card-back,
+.card-front {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.card-front {
+  display: none;
+}
+
+.game-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #4b7fa1;
+}
+
+/* Word Puzzle Game Styles */
+.puzzle-area {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.puzzle-word {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #4b7fa1;
+  margin-bottom: 15px;
+  letter-spacing: 0.2em;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.puzzle-hint {
+  font-size: 1rem;
+  color: #6b7280;
+  font-style: italic;
+  min-height: 30px;
+  margin-bottom: 15px;
+}
+
+.puzzle-controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.puzzle-stats {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  color: #4b7fa1;
+}
+
+.puzzle-input-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+  flex-wrap: wrap;
+}
+
+.puzzle-input {
+  padding: 10px 15px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  min-width: 200px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.puzzle-input:focus {
+  outline: none;
+  border-color: #4b7fa1;
+}
+
+/* Feedback Animation */
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+}
+
+/* Stress Ball Game Styles */
+.stress-ball-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.stress-ball {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4ecdc4, #44a08d);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.1s ease, background-color 0.1s ease;
+  box-shadow: 0 8px 25px rgba(78, 205, 196, 0.3);
+  user-select: none;
+}
+
+.stress-ball:hover {
+  transform: scale(1.05);
+}
+
+.ball-text {
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.stress-stats {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  color: #4b7fa1;
+  margin-bottom: 15px;
+}
+
+/* Color Therapy Styles */
+.color-palette {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.color-option {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 3px solid transparent;
+  transition: transform 0.2s ease;
+}
+
+.color-option:hover {
+  transform: scale(1.1);
+}
+
+.color-option.selected {
+  border-color: #4b7fa1;
+  transform: scale(1.1);
+}
+
+.color-canvas {
+  width: 100%;
+  height: 300px;
+  border: 2px dashed #d1d5db;
+  border-radius: 12px;
+  position: relative;
+  background: #fafafa;
+  margin-bottom: 15px;
+}
+
+.color-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Gratitude Journal Styles */
+.gratitude-prompt {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.gratitude-prompt h3 {
+  color: #4b7fa1;
+  margin: 0;
+}
+
+.gratitude-input {
+  width: 100%;
+  min-height: 100px;
+  padding: 15px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 1rem;
+  resize: vertical;
+  margin-bottom: 20px;
+}
+
+.gratitude-input:focus {
+  outline: none;
+  border-color: #4b7fa1;
+}
+
+.gratitude-entries {
+  margin-top: 20px;
+}
+
+.gratitude-entry {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-left: 4px solid #4b7fa1;
+}
+
+.entry-date {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 5px;
+}
+
+.entry-text {
+  color: #374151;
+  line-height: 1.5;
+}
+
+/* Game Buttons */
+.game-btn {
+  background: #4b7fa1;
   color: white;
   border: none;
+  padding: 12px 24px;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  margin-top: 10px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-#restart-btn:hover {
-  background-color: #255c6b;
+.game-btn:hover {
+  background: #3e6b8a;
+  transform: translateY(-1px);
 }
 
-.game-info {
-  margin-top: 10px;
+.game-btn:active {
+  transform: translateY(0);
 }
 
-#game-message {
-  font-weight: bold;
-  color: #31708e;
-  margin-top: 10px;
+/* Responsive Design */
+@media (min-width: 768px) {
+  .games-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .memory-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
+
+@media (min-width: 1024px) {
+  .games-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Dark Mode Styles */
+[data-theme="dark"] .game-card {
+  background: #0e1726;
+  border-color: #1e293b;
+}
+
+[data-theme="dark"] .games-header h1 {
+  color: #bfdbfe;
+}
+
+[data-theme="dark"] .game-header h2 {
+  color: #bfdbfe;
+}
+
+[data-theme="dark"] .game-header p {
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .memory-card {
+  background: #1e293b;
+}
+
+[data-theme="dark"] .memory-card.matched {
+  background: #064e3b;
+}
+
+[data-theme="dark"] .game-stats {
+  color: #93c5fd;
+}
+
+[data-theme="dark"] .color-canvas {
+  background: #1e293b;
+  border-color: #374151;
+}
+
+[data-theme="dark"] .gratitude-input {
+  background: #1e293b;
+  border-color: #374151;
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .gratitude-input:focus {
+  border-color: #93c5fd;
+}
+
+[data-theme="dark"] .gratitude-entry {
+  background: #1e293b;
+  border-left-color: #93c5fd;
+}
+
+[data-theme="dark"] .entry-text {
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .entry-date {
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .gratitude-prompt h3 {
+  color: #93c5fd;
+}
+
+[data-theme="dark"] .puzzle-input {
+  background: #1e293b;
+  border-color: #374151;
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .puzzle-input:focus {
+  border-color: #93c5fd;
+}
+
