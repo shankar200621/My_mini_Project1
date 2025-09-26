@@ -22,6 +22,31 @@ const questions = [
   {
     question: "Are you able to take time for yourself?",
     options: ["Yes", "Occasionally", "Rarely", "Never"]
+  },
+  // New questions added for a more complete snapshot
+  {
+    question: "How is your energy level today?",
+    options: ["High", "Moderate", "Low", "Very low"]
+  },
+  {
+    question: "How often have you felt sad or down this week?",
+    options: ["Rarely", "Sometimes", "Often", "Always"]
+  },
+  {
+    question: "How well are you able to focus today?",
+    options: ["Great", "Okay", "Not much", "Not at all"]
+  },
+  {
+    question: "How comfortable are you sharing your feelings with someone you trust?",
+    options: ["Yes, absolutely", "Sometimes", "Not really", "I feel alone"]
+  },
+  {
+    question: "Over the past few days, how restful have you felt?",
+    options: ["Very Well", "Somewhat", "Poorly", "Didn't sleep"]
+  },
+  {
+    question: "How often did you do something kind for yourself this week?",
+    options: ["Often", "Sometimes", "Rarely", "Never"]
   }
 ];
 
@@ -34,17 +59,21 @@ const nextBtn = document.getElementById("next-btn");
 const backBtn = document.getElementById("back-btn");
 const skipBtn = document.getElementById("skip-btn");
 const progressFill = document.getElementById("progress-fill");
+const progressLabel = document.getElementById("progress-label");
+const srStatus = document.getElementById("sr-status");
 
 function loadQuestion(index) {
   const current = questions[index];
   questionEl.textContent = current.question;
   optionsEl.innerHTML = "";
   nextBtn.disabled = !answers[index];
+  questionEl.focus && questionEl.focus();
 
   current.options.forEach(option => {
     const btn = document.createElement("button");
     btn.textContent = option;
     btn.classList.add("option-btn");
+    btn.type = "button";
     if (answers[index] === option) {
       btn.classList.add("selected");
       nextBtn.disabled = false;
@@ -54,12 +83,14 @@ function loadQuestion(index) {
       document.querySelectorAll(".option-btn").forEach(b => b.classList.remove("selected"));
       btn.classList.add("selected");
       nextBtn.disabled = false;
+      if (srStatus) srStatus.textContent = `Selected: ${option}`;
     };
     optionsEl.appendChild(btn);
   });
 
   progressFill.style.width = `${(index / questions.length) * 100}%`;
   backBtn.disabled = index === 0;
+  if (progressLabel) progressLabel.textContent = `Question ${index + 1} of ${questions.length}`;
 }
 
 function calculateResult() {
@@ -67,48 +98,84 @@ function calculateResult() {
 
   answers.forEach(answer => {
     switch (answer) {
+      // 3 points (protective/positive)
       case "Great":
       case "Very Well":
       case "Yes, absolutely":
       case "Rarely":
       case "Very motivated":
       case "Yes":
+      case "High":
+      case "Often": // for self-care frequency
         score += 3; break;
+      // 2 points (neutral/moderate)
       case "Okay":
       case "Somewhat":
       case "Sometimes":
       case "Occasionally":
+      case "Moderate":
         score += 2; break;
+      // 1 point (mild difficulties)
       case "Stressed":
       case "Poorly":
       case "Not really":
-      case "Often":
+      case "Often": // when used in negative questions
       case "Not much":
+      case "Low":
         score += 1; break;
+      // 0 points (severe difficulties)
       case "Anxious":
       case "Didn't sleep":
       case "I feel alone":
       case "Always":
       case "Not at all":
       case "Never":
+      case "Very low":
         score += 0; break;
     }
   });
 
+  const maxScore = questions.length * 3;
+  const ratio = maxScore ? (score / maxScore) : 0;
+
   let result = "", suggestions = "", diet = "";
 
-  if (score >= 15) {
-    result = "You're doing well overall!";
-    suggestions = "✅ Keep journaling or practicing mindfulness.<br>✅ Stay connected with supportive people.<br>✅ Continue doing activities you love.";
-    diet = "🥗 Try including fresh fruits, leafy greens, and omega-3 rich foods like walnuts and salmon.";
-  } else if (score >= 9) {
-    result = "You're experiencing some stress. Take gentle steps.";
-    suggestions = "💡 Try a short walk or deep breathing today.<br>💡 Set small goals and reward yourself.<br>💡 Talk to a friend about how you’re feeling.";
-    diet = "🍵 Try herbal teas, bananas, oats, and dark chocolate to uplift mood and calm nerves.";
+  if (ratio >= 0.75) {
+    result = "You're doing well overall — keep nurturing your wellbeing.";
+    suggestions = [
+      "Maintain routines that work: short walks, consistent sleep, screen breaks.",
+      "Keep social connections active; share wins and challenges.",
+      "Consider journaling or gratitude notes 3×/week."
+    ].map(s => `✅ ${s}`).join('<br>');
+    diet = [
+      "Colorful plate: leafy greens, berries, carrots (antioxidants).",
+      "Healthy fats: olive oil, nuts, seeds, fatty fish (omega‑3).",
+      "Stay hydrated; add herbal teas (chamomile, peppermint)."
+    ].map(s => `🥗 ${s}`).join('<br>');
+  } else if (ratio >= 0.45) {
+    result = "You're experiencing some stress — small consistent steps will help.";
+    suggestions = [
+      "Try 5–10 minutes of breathing or body scan today.",
+      "Pick one small, doable task and celebrate completion.",
+      "Talk to a supportive friend; name one feeling you’ve had today."
+    ].map(s => `💡 ${s}`).join('<br>');
+    diet = [
+      "Regular meals with protein + complex carbs (oats, lentils, quinoa).",
+      "Magnesium sources (pumpkin seeds, spinach) may support relaxation.",
+      "Limit excess caffeine; swap a coffee for green tea."
+    ].map(s => `🍵 ${s}`).join('<br>');
   } else {
-    result = "It seems you're struggling. You're not alone.";
-    suggestions = "🧠 Reach out to a counselor or trusted person.<br>🧠 Write down your emotions to better understand them.<br>🧠 Consider mindfulness or guided meditations.";
-    diet = "🍲 Add warm, nutritious meals like soups, complex carbs, and vitamin-B-rich foods like eggs and lentils.";
+    result = "It seems you're struggling — you’re not alone, support can help.";
+    suggestions = [
+      "Reach out to a counselor, helpline, or someone you trust.",
+      "Write down 3 emotions and what might be driving them.",
+      "Try a guided 3–5 minute breathing session to ground."
+    ].map(s => `🧠 ${s}`).join('<br>');
+    diet = [
+      "Warm, simple meals: soups, stews, whole‑grain toast with eggs.",
+      "B‑vitamins and iron (beans, eggs, spinach).",
+      "If appetite is low, try small nutrient‑dense snacks every 3–4 hours."
+    ].map(s => `🍲 ${s}`).join('<br>');
   }
 
   return { result, suggestions, diet };
@@ -165,3 +232,4 @@ skipBtn.addEventListener("click", () => {
 
 // Initial load
 loadQuestion(currentIndex);
+
