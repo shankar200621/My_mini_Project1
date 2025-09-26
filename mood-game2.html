@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MindCare Games - Mental Wellness Activities</title>
+    <meta name="description" content="Engaging games and activities to support your mental wellness journey." />
+    <link rel="stylesheet" href="my_project.css" />
+    <link rel="stylesheet" href="mood-game.css" />
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content">Skip to games</a>
+    <nav class="navbar">
+        <div class="logo" aria-label="MindCare home">🧠 MindCare</div>
+        <ul role="list" aria-label="Primary">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="checkin.html">Check-In</a></li>
+            <li><a href="breathing.html">Breathing</a></li>
+            <li><a href="mood.html">Mood Tracker</a></li>
+            <li><a href="info.html">More About Mental Health</a></li>
+        </ul>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+            🌙
+        </button>
+    </nav>
+
+    <main id="main-content" class="page" tabindex="-1">
+        <div class="games-container">
+            <header class="games-header">
+                <h1>MindCare Games</h1>
+                <p>Fun activities to support your mental wellness journey</p>
+            </header>
+
+            <div class="games-grid">
+                <!-- Memory Match Game -->
+                <div class="game-card" id="memory-game">
+                    <div class="game-header">
+                        <h2>🧠 Memory Match</h2>
+                        <p>Improve focus and concentration</p>
+                    </div>
+                    <div class="game-content">
+                        <div class="game-stats">
+                            <span>Moves: <span id="memory-moves">0</span></span>
+                            <span>Time: <span id="memory-time">0s</span></span>
+                        </div>
+                        <div class="memory-grid" id="memory-grid"></div>
+                        <button class="game-btn" id="memory-start">Start Game</button>
+                    </div>
+                </div>
+
+                <!-- Word Puzzle Game -->
+                <div class="game-card" id="word-puzzle-game">
+                    <div class="game-header">
+                        <h2>🧩 Word Puzzle</h2>
+                        <p>Unscramble words to boost your focus</p>
+                    </div>
+                    <div class="game-content">
+                        <div class="puzzle-area">
+                            <div class="puzzle-word" id="puzzle-word">Loading...</div>
+                            <div class="puzzle-hint" id="puzzle-hint"></div>
+                            <div class="puzzle-input-container">
+                                <input type="text" id="puzzle-input" placeholder="Type your answer here..."
+                                    class="puzzle-input">
+                                <button class="game-btn" id="puzzle-submit">Submit</button>
+                            </div>
+                        </div>
+                        <div class="puzzle-controls">
+                            <button class="game-btn" id="puzzle-new">New Word</button>
+                            <button class="game-btn" id="puzzle-hint-btn">Hint</button>
+                        </div>
+                        <div class="puzzle-stats">
+                            <span>Score: <span id="puzzle-score">0</span></span>
+                            <span>Streak: <span id="puzzle-streak">0</span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Color Therapy -->
+                <div class="game-card" id="color-game">
+                    <div class="game-header">
+                        <h2>🎨 Color Therapy</h2>
+                        <p>Express yourself through colors</p>
+                    </div>
+                    <div class="game-content">
+                        <div class="color-palette">
+                            <div class="color-option" data-color="#ff6b6b" style="background: #ff6b6b;"></div>
+                            <div class="color-option" data-color="#4ecdc4" style="background: #4ecdc4;"></div>
+                            <div class="color-option" data-color="#45b7d1" style="background: #45b7d1;"></div>
+                            <div class="color-option" data-color="#96ceb4" style="background: #96ceb4;"></div>
+                            <div class="color-option" data-color="#feca57" style="background: #feca57;"></div>
+                            <div class="color-option" data-color="#ff9ff3" style="background: #ff9ff3;"></div>
+                        </div>
+                        <div class="color-canvas" id="color-canvas"></div>
+                        <button class="game-btn" id="color-clear">Clear Canvas</button>
+                    </div>
+                </div>
+
+                <!-- Gratitude Journal -->
+                <div class="game-card" id="gratitude-game">
+                    <div class="game-header">
+                        <h2>🙏 Gratitude Journal</h2>
+                        <p>Reflect on positive moments</p>
+                    </div>
+                    <div class="game-content">
+                        <div class="gratitude-prompt" id="gratitude-prompt">
+                            <h3>What are you grateful for today?</h3>
+                        </div>
+                        <textarea class="gratitude-input" id="gratitude-input"
+                            placeholder="Write something you're grateful for..."></textarea>
+                        <div class="gratitude-entries" id="gratitude-entries"></div>
+                        <button class="game-btn" id="gratitude-add">Add Entry</button>
+                    </div>
+                </div>
+
+                <!-- Stress Ball Game -->
+                <div class="game-card" id="stress-ball-game">
+                    <div class="game-header">
+                        <h2>🎯 Stress Ball</h2>
+                        <p>Release tension with virtual stress relief</p>
+                    </div>
+                    <div class="game-content">
+                        <div class="stress-ball-container">
+                            <div class="stress-ball" id="stress-ball">
+                                <div class="ball-text">Squeeze me!</div>
+                            </div>
+                        </div>
+                        <div class="stress-stats">
+                            <span>Squeezes: <span id="squeeze-count">0</span></span>
+                            <span>Time: <span id="stress-time">0s</span></span>
+                        </div>
+                        <button class="game-btn" id="stress-reset">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 MindCare. You are not alone 💚</p>
+    </footer>
+
+    <script src="index.js"></script>
+    <script src="mood-game2.js"></script>
+</body>
+
+</html>
