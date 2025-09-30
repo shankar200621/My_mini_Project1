@@ -6,150 +6,409 @@
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, sans-serif;
-  background: #f0f9f9;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to top right, #d6e6ff, #fafaff);
   color: #333;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
-/* Navbar */
+/* Accessibility utilities */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.skip-link:focus {
+  left: 20px;
+  top: 20px;
+  width: auto;
+  height: auto;
+  padding: 10px 14px;
+  background: #0ea5e9;
+  color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Navigation Bar */
 .navbar {
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(5px);
+  padding: 15px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #009688;
-  padding: 12px 20px;
+  z-index: 999;
+}
+
+.navbar.elevated {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 220ms ease;
 }
 
 .logo {
-  font-size: 1.5rem;
-  color: white;
+  font-size: 3rem;
   font-weight: bold;
+  color: #5c80bc;
 }
 
-.nav-links {
+.navbar ul {
   list-style: none;
   display: flex;
+  gap: 20px;
 }
 
-.nav-links li {
-  margin-left: 15px;
-}
-
-.nav-links a {
-  color: white;
+.navbar a {
   text-decoration: none;
-  font-size: 1rem;
-  transition: opacity 0.3s;
+  color: #333;
+  font-weight: 500;
+  transition: 0.3s;
 }
 
-.nav-links a:hover,
-.nav-links .active {
-  opacity: 0.8;
-  text-decoration: underline;
+.navbar a:hover {
+  color: #5c80bc;
+}
+
+.navbar a:focus-visible,
+.btn:focus-visible {
+  outline: 3px solid #0ea5e9;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.login-btn {
+  padding: 8px 14px;
+  border: 1px solid #5c80bc;
+  border-radius: 999px;
+}
+
+.login-btn:hover {
+  background: #5c80bc;
+  color: #fff;
+}
+
+.theme-toggle {
+  margin-left: 16px;
+  background: transparent;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  background: #eef2ff;
 }
 
 /* Info Section */
 .info-section {
-  max-width: 800px;
+  max-width: 900px;
   margin: 30px auto;
   padding: 20px;
   text-align: center;
 }
 
 .info-section h1 {
-  font-size: 2rem;
-  color: #004d61;
+  font-size: 2.5rem;
+  color: #4b7fa1;
   margin-bottom: 10px;
 }
 
 .info-section .intro {
-  font-size: 1.1rem;
-  color: #666;
-  margin-bottom: 30px;
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 40px;
 }
 
-/* FAQ */
-.faq {
-  margin-bottom: 15px;
-  text-align: left;
+/* Search Container */
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  gap: 10px;
+}
+
+.search-container input {
+  padding: 10px 15px;
+  border: 1px solid #cbd5e1;
+  border-radius: 25px;
+  font-size: 1rem;
+  width: 300px;
+  outline: none;
+}
+
+.search-container input:focus {
+  border-color: #0ea5e9;
+}
+
+.search-container button {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.search-container button:hover {
+  background: #f3f4f6;
+}
+
+/* FAQ Container */
+.faq-container {
+  margin-bottom: 60px;
+}
+
+.faq-container h2 {
+  font-size: 2rem;
+  color: #4b7fa1;
+  margin-bottom: 20px;
+}
+
+.tip-of-day {
+  margin: 10px 0 6px 0;
+  padding: 10px 12px;
+  background: #eef6fc;
+  border: 1px solid #e5efff;
+  border-radius: 10px;
+  color: #355f7a;
+}
+
+.faq-list {
+  display: grid;
+  gap: 12px;
+}
+
+.faq-item {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fbfdff;
 }
 
 .faq-question {
-  background: #e0f7f7;
-  border: none;
   width: 100%;
   text-align: left;
-  padding: 14px;
+  background: transparent;
+  border: 0;
+  padding: 14px 16px;
   font-size: 1rem;
-  font-weight: bold;
   cursor: pointer;
-  border-radius: 8px;
+  color: #0f172a;
+  border-radius: 12px;
   transition: background 0.3s;
-  position: relative;
 }
 
-.faq-question::after {
-  content: "+";
-  position: absolute;
-  right: 20px;
-  font-size: 1.2rem;
-  transition: transform 0.3s;
+.faq-question:focus-visible {
+  outline: 3px solid #0ea5e9;
+  outline-offset: 2px;
 }
 
-.faq-question.active {
-  background: #c2f0f0;
-}
-
-.faq-question.active::after {
-  content: "-";
+.faq-question:hover {
+  background: #f1f5f9;
 }
 
 .faq-answer {
+  padding: 0 16px 14px;
+  color: #475569;
   max-height: 0;
   overflow: hidden;
-  background: #f9fdfd;
-  padding: 0 14px;
-  border-left: 3px solid #009688;
-  margin-top: 5px;
-  border-radius: 0 0 8px 8px;
-  transition: max-height 0.4s ease;
+  transition: max-height 0.3s ease;
 }
 
 .faq-answer p {
-  padding: 12px 0;
-  font-size: 0.95rem;
-  color: #444;
+  margin: 12px 0;
+  line-height: 1.6;
+}
+
+/* Myths vs Facts */
+.myths-facts {
+  margin-bottom: 60px;
+}
+
+.myths-facts h2 {
+  font-size: 2rem;
+  color: #4b7fa1;
+  margin-bottom: 20px;
+}
+
+.myth-fact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.myth-fact {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eef2ff;
+}
+
+.myth-fact h3 {
+  color: #355f7a;
+  margin-bottom: 10px;
+}
+
+.myth-fact p {
+  color: #475569;
+  line-height: 1.6;
+}
+
+/* Self-Care Tips */
+.self-care {
+  margin-bottom: 60px;
+}
+
+.self-care h2 {
+  font-size: 2rem;
+  color: #4b7fa1;
+  margin-bottom: 20px;
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.tip {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eef2ff;
+  transition: transform 0.3s;
+}
+
+.tip:hover {
+  transform: translateY(-5px);
+}
+
+.tip-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.tip h3 {
+  color: #355f7a;
+  margin-bottom: 10px;
+}
+
+.tip p {
+  color: #475569;
+  line-height: 1.6;
+}
+
+/* Emergency Contacts */
+.emergency {
+  margin-bottom: 60px;
+}
+
+.emergency h2 {
+  font-size: 2rem;
+  color: #4b7fa1;
+  margin-bottom: 10px;
+}
+
+.emergency p {
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+.emergency-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.emergency-item {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eef2ff;
+}
+
+.emergency-item h3 {
+  color: #355f7a;
+  margin-bottom: 10px;
+}
+
+.emergency-item p {
+  color: #475569;
+  margin: 5px 0;
 }
 
 /* Resources */
 .resources {
-  margin: 40px 0;
-  text-align: left;
+  margin-bottom: 60px;
 }
 
 .resources h2 {
-  font-size: 1.4rem;
-  color: #004d61;
+  font-size: 2rem;
+  color: #4b7fa1;
+  margin-bottom: 20px;
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.resource {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eef2ff;
+}
+
+.resource h3 {
+  color: #355f7a;
+  margin-bottom: 10px;
+}
+
+.resource p {
+  color: #475569;
   margin-bottom: 15px;
 }
 
-.resources ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.resources li {
-  margin: 8px 0;
-}
-
-.resources a {
-  color: #009688;
+.resource a {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #5c80bc;
+  color: white;
   text-decoration: none;
+  border-radius: 20px;
+  transition: background 0.3s;
 }
 
-.resources a:hover {
-  text-decoration: underline;
+.resource a:hover {
+  background: #3e62a8;
 }
 
 /* Back Button */
@@ -170,9 +429,150 @@ body {
 
 /* Footer */
 .footer {
-  background: #004d61;
-  color: white;
+  background: #f0f7ff;
+  color: #777;
   text-align: center;
-  padding: 15px;
-  margin-top: 30px;
+  padding: 30px;
+  font-size: 0.9rem;
 }
+
+/* Dark mode */
+[data-theme="dark"] body {
+  background: linear-gradient(to top right, #0b1220, #0e1726);
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .navbar {
+  background: rgba(15, 23, 42, 0.75);
+}
+
+[data-theme="dark"] .navbar a {
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .navbar a:hover {
+  color: #93c5fd;
+}
+
+[data-theme="dark"] .login-btn {
+  border-color: #93c5fd;
+}
+
+[data-theme="dark"] .login-btn:hover {
+  background: #3b82f6;
+}
+
+[data-theme="dark"] .theme-toggle {
+  border-color: #334155;
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  background: #0b1220;
+}
+
+[data-theme="dark"] .info-section h1 {
+  color: #bfdbfe;
+}
+
+[data-theme="dark"] .info-section .intro {
+  color: #cbd5e1;
+}
+
+[data-theme="dark"] .search-container input {
+  border-color: #334155;
+  background: #0b1220;
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .search-container input:focus {
+  border-color: #0ea5e9;
+}
+
+[data-theme="dark"] .search-container button:hover {
+  background: #0b1220;
+}
+
+[data-theme="dark"] .faq-container h2,
+[data-theme="dark"] .myths-facts h2,
+[data-theme="dark"] .self-care h2,
+[data-theme="dark"] .emergency h2,
+[data-theme="dark"] .resources h2 {
+  color: #bfdbfe;
+}
+
+[data-theme="dark"] .faq-item {
+  background: #0b1220;
+  border-color: #15223b;
+}
+
+[data-theme="dark"] .faq-question {
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .faq-question:hover {
+  background: #0e1726;
+}
+
+[data-theme="dark"] .faq-answer {
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .myth-fact,
+[data-theme="dark"] .tip,
+[data-theme="dark"] .emergency-item,
+[data-theme="dark"] .resource {
+  background: #0e1726;
+  border-color: #15223b;
+}
+
+[data-theme="dark"] .myth-fact h3,
+[data-theme="dark"] .tip h3,
+[data-theme="dark"] .emergency-item h3,
+[data-theme="dark"] .resource h3 {
+  color: #bfdbfe;
+}
+
+[data-theme="dark"] .myth-fact p,
+[data-theme="dark"] .tip p,
+[data-theme="dark"] .emergency-item p,
+[data-theme="dark"] .resource p {
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .emergency p {
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .resource a {
+  background: #3b82f6;
+}
+
+[data-theme="dark"] .resource a:hover {
+  background: #2563eb;
+}
+
+[data-theme="dark"] .footer {
+  background-color: #0b1220;
+  color: #9ca3af;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .search-container input {
+    width: 250px;
+  }
+
+  .navbar {
+    padding: 12px 20px;
+  }
+
+  .logo {
+    font-size: 2.2rem;
+  }
+
+  .info-section h1 {
+    font-size: 2rem;
+  }
+}
+
