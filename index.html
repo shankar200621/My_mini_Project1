@@ -205,6 +205,11 @@
         <a href="breathing.html">Try Now</a>
       </div>
       <div class="feature-card">
+        <h3>📊 Mood Tracker</h3>
+        <p>Track and reflect on your mood</p>
+        <a href="mood.html">Open</a>
+      </div>
+      <div class="feature-card">
         <h3>🎮 Mind Games</h3>
         <p>Fun activities for mental wellness</p>
         <a href="mood-game2.html">Play</a>
@@ -215,7 +220,32 @@
         <a href="info.html">Visit</a>
       </div>
     </section>
+
+
   </main>
+
+  <!-- Crisis Support Floating Button -->
+  <button id="crisis-fab" class="crisis-fab" aria-haspopup="dialog" aria-controls="crisis-modal"
+    aria-label="Open crisis support">🆘</button>
+
+  <!-- Crisis Support Modal -->
+  <div id="crisis-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="crisis-title" hidden>
+    <div class="modal-backdrop" data-close="true"></div>
+    <div class="modal-content" role="document">
+      <button class="modal-close" id="crisis-close" aria-label="Close crisis support">✕</button>
+      <h2 id="crisis-title">You are not alone 💚</h2>
+      <p>If you’re in immediate danger, call your local emergency number.</p>
+      <div class="crisis-actions">
+        <a class="btn call" href="tel:988">Call 988 (US)</a>
+        <a class="btn text" href="sms:741741">Text HOME to 741741</a>
+        <a class="btn call" href="tel:112">Call 112 (India)</a>
+        <a class="btn call" href="tel:18005990019">Call KIRAN 1800-599-0019 (India)</a>
+        <a class="btn link" href="https://www.befrienders.org/" target="_blank" rel="noopener">International
+          Hotlines</a>
+      </div>
+      <p class="small">Available 24/7. Free and confidential.</p>
+    </div>
+  </div>
 
   <footer class="footer">
     <p>© 2025 MindCare. You are not alone 💚</p>
@@ -225,6 +255,5 @@
 </body>
 
 </html>
-
 
 
