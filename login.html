@@ -1,21 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login - MindCare</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MindCare — Login</title>
   <link rel="stylesheet" href="login.css" />
 </head>
 <body>
-  <div class="login-container">
-    <h2>Login to MindCare</h2>
-    <form id="login-form">
-      <input type="email" placeholder="Email" id="email" required />
-      <input type="password" placeholder="Password" id="password" required />
-      <button type="submit">Login</button>
-      <p class="error-msg" id="error-msg"></p>
-    </form>
-  </div>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <header class="navbar">
+    <div class="logo">🌿 MindCare</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="checkin.html">Check-in</a></li>
+        <li><a href="#" class="login-btn">Login</a></li>
+      </ul>
+    </nav>
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+  </header>
+
+  <main id="main" class="login-container">
+    <div class="login-box">
+      <h1 class="title">🌿 Welcome Back to MindCare</h1>
+      <p class="subtitle">You are stronger than you think — take a deep breath and log in.</p>
+
+      <div id="errorMessage" class="error-message" aria-live="polite"></div>
+
+      <form id="loginForm" autocomplete="on">
+        <div class="input-group">
+          <label for="email" class="visually-hidden">Email</label>
+          <input id="email" type="email" placeholder="Email" required aria-describedby="emailError" />
+          <span id="emailError" class="error-text"></span>
+        </div>
+
+        <div class="input-group password-group">
+          <label for="password" class="visually-hidden">Password</label>
+          <input id="password" type="password" placeholder="Password" required aria-describedby="passwordError" />
+          <button id="togglePassword" type="button" class="eye-btn" aria-label="Show or hide password">👁</button>
+          <span id="passwordError" class="error-text"></span>
+        </div>
+
+        <div class="remember-group">
+          <input id="rememberMe" type="checkbox" />
+          <label for="rememberMe">Remember me</label>
+        </div>
+
+        <button type="submit" class="login-btn" id="loginBtn">
+          <span class="btn-text">Login</span>
+          <span class="loading-spinner" style="display: none;">⏳</span>
+        </button>
+
+        <div class="extras">
+          <a href="#">Forgot Password?</a>
+          <a href="#">Sign Up</a>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2023 MindCare. Take care of your mental health.</p>
+  </footer>
 
   <script src="login.js"></script>
 </body>
