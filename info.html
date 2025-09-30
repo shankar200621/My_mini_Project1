@@ -1,86 +1,233 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mental Health Information Hub</title>
+  <meta name="description" content="Learn about mental health, self-care tips, myths, and helpful resources.">
+  <meta name="theme-color" content="#0ea5e9">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var theme = (stored === 'light' || stored === 'dark') ? stored : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) { }
+    })();
+  </script>
   <link rel="stylesheet" href="info.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <!-- Navbar -->
   <nav class="navbar">
-    <div class="logo">MindSpace</div>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="info.html" class="active">Info Hub</a></li>
+    <div class="logo" aria-label="MindCare home">🧠 MindCare</div>
+    <ul role="list" aria-label="Primary">
+      <li><a href="checkin.html">Check-In</a></li>
+      <li><a href="breathing.html">Breathing</a></li>
+      <li><a href="mood.html">Mood Tracker</a></li>
+      <li><a href="mood-game2.html">Games</a></li>
+      <li><a href="info.html" class="active">More About Mental Health</a></li>
+      <li><a href="login.html" class="login-btn">Login</a></li>
     </ul>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+      🌙
+    </button>
   </nav>
 
   <!-- Info Content -->
-  <section class="info-section">
-    <h1>Mental Health Information Hub</h1>
-    <p class="intro">Your go-to place for understanding mental health and wellbeing 💙</p>
+  <main id="main-content" tabindex="-1">
+    <section class="info-section">
+      <h1>Mental Health Information Hub</h1>
+      <p class="intro">Your go-to place for understanding mental health and wellbeing 💙</p>
 
-    <!-- FAQ Section -->
-    <div class="faq">
-      <button class="faq-question">🧠 Why is mental health important?</button>
-      <div class="faq-answer">
-        <p>Mental health affects how we think, feel, and act. It influences how we handle stress, relate to others, and make choices.</p>
+      <!-- Search Bar -->
+      <div class="search-container">
+        <input type="text" id="faq-search" placeholder="Search FAQs..." aria-label="Search FAQs">
+        <button id="clear-search" aria-label="Clear search">✕</button>
       </div>
-    </div>
 
-    <div class="faq">
-      <button class="faq-question">⚠️ What happens if mental health is poor?</button>
-      <div class="faq-answer">
-        <p>Poor mental health can cause stress, anxiety, depression, sleep problems, and even physical health issues.</p>
+      <!-- FAQ Section -->
+      <div class="faq-container">
+        <h2>Frequently Asked Questions</h2>
+        <div class="tip-of-day" aria-live="polite">
+          <strong>Tip of the day:</strong> <span id="tip-of-day-text">Loading...</span>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq1">🧠 Why is mental health important?</button>
+            <div id="faq1" class="faq-answer" hidden>
+              <p>Mental health affects how we think, feel, and act. It influences how we handle stress, relate to others, and make choices.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq2">⚠️ What happens if mental health is poor?</button>
+            <div id="faq2" class="faq-answer" hidden>
+              <p>Poor mental health can cause stress, anxiety, depression, sleep problems, and even physical health issues.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq3">🌱 How can I take care of my mental health?</button>
+            <div id="faq3" class="faq-answer" hidden>
+              <p>Practice mindfulness, exercise, get proper sleep, maintain social connections, and seek help when needed.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq4">💤 How does sleep affect mental health?</button>
+            <div id="faq4" class="faq-answer" hidden>
+              <p>Good sleep improves focus, mood, and energy. Poor sleep increases risk of anxiety, depression, and stress.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq5">🤝 When should I seek professional help?</button>
+            <div id="faq5" class="faq-answer" hidden>
+              <p>If sadness, anxiety, or stress interfere with daily life for more than a few weeks, it’s best to seek professional support.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq6">📱 Can technology affect mental health?</button>
+            <div id="faq6" class="faq-answer" hidden>
+              <p>Yes. Excessive screen time and social media use can increase stress and anxiety. Taking digital breaks is helpful.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq7">🧘 What is mindfulness?</button>
+            <div id="faq7" class="faq-answer" hidden>
+              <p>Mindfulness is the practice of being present and fully engaged with the current moment, without judgment.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq8">🍎 How does diet affect mental health?</button>
+            <div id="faq8" class="faq-answer" hidden>
+              <p>A balanced diet supports brain function. Nutrient-rich foods can improve mood and reduce symptoms of depression.</p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="faq">
-      <button class="faq-question">🌱 How can I take care of my mental health?</button>
-      <div class="faq-answer">
-        <p>Practice mindfulness, exercise, get proper sleep, maintain social connections, and seek help when needed.</p>
-      </div>
-    </div>
+      <!-- Myths vs Facts -->
+      <section class="myths-facts">
+        <h2>Myths vs Facts</h2>
+        <div class="myth-fact-grid">
+          <div class="myth-fact">
+            <h3>Myth: Mental illness is rare</h3>
+            <p>Fact: 1 in 4 people will experience mental health issues at some point in their lives.</p>
+          </div>
+          <div class="myth-fact">
+            <h3>Myth: Therapy is only for severe cases</h3>
+            <p>Fact: Therapy can help with everyday stress, relationships, and personal growth.</p>
+          </div>
+          <div class="myth-fact">
+            <h3>Myth: Mental health problems are a sign of weakness</h3>
+            <p>Fact: Mental health issues can affect anyone, regardless of strength or resilience.</p>
+          </div>
+          <div class="myth-fact">
+            <h3>Myth: Medication is the only treatment</h3>
+            <p>Fact: Many people benefit from therapy, lifestyle changes, and support networks.</p>
+          </div>
+        </div>
+      </section>
 
-    <div class="faq">
-      <button class="faq-question">💤 How does sleep affect mental health?</button>
-      <div class="faq-answer">
-        <p>Good sleep improves focus, mood, and energy. Poor sleep increases risk of anxiety, depression, and stress.</p>
-      </div>
-    </div>
+      <!-- Self-Care Tips -->
+      <section class="self-care">
+        <h2>Self-Care Tips</h2>
+        <div class="tips-grid">
+          <div class="tip">
+            <span class="tip-icon">🌿</span>
+            <h3>Practice Gratitude</h3>
+            <p>Write down three things you're grateful for each day.</p>
+          </div>
+          <div class="tip">
+            <span class="tip-icon">🏃</span>
+            <h3>Stay Active</h3>
+            <p>Regular exercise releases endorphins that boost mood.</p>
+          </div>
+          <div class="tip">
+            <span class="tip-icon">📖</span>
+            <h3>Read or Learn</h3>
+            <p>Engage in activities that stimulate your mind.</p>
+          </div>
+          <div class="tip">
+            <span class="tip-icon">👥</span>
+            <h3>Connect with Others</h3>
+            <p>Spend time with friends and family for emotional support.</p>
+          </div>
+          <div class="tip">
+            <span class="tip-icon">🛌</span>
+            <h3>Prioritize Sleep</h3>
+            <p>Aim for 7-9 hours of quality sleep each night.</p>
+          </div>
+          <div class="tip">
+            <span class="tip-icon">🎨</span>
+            <h3>Creative Outlets</h3>
+            <p>Express yourself through art, music, or hobbies.</p>
+          </div>
+        </div>
+      </section>
 
-    <div class="faq">
-      <button class="faq-question">🤝 When should I seek professional help?</button>
-      <div class="faq-answer">
-        <p>If sadness, anxiety, or stress interfere with daily life for more than a few weeks, it’s best to seek professional support.</p>
-      </div>
-    </div>
+      <!-- Emergency Contacts -->
+      <section class="emergency">
+        <h2>Emergency Contacts</h2>
+        <p>If you're in crisis, please reach out immediately:</p>
+        <div class="emergency-grid">
+          <div class="emergency-item">
+            <h3>National Suicide Prevention Lifeline (US)</h3>
+            <p>Call: 988</p>
+            <p>Available 24/7</p>
+          </div>
+          <div class="emergency-item">
+            <h3>Crisis Text Line</h3>
+            <p>Text: HOME to 741741</p>
+            <p>Free, 24/7 support</p>
+          </div>
+          <div class="emergency-item">
+            <h3>International Hotlines</h3>
+            <p><a href="https://www.befrienders.org/" target="_blank">Befrienders Worldwide</a></p>
+            <p>Find local support</p>
+          </div>
+        </div>
+      </section>
 
-    <div class="faq">
-      <button class="faq-question">📱 Can technology affect mental health?</button>
-      <div class="faq-answer">
-        <p>Yes. Excessive screen time and social media use can increase stress and anxiety. Taking digital breaks is helpful.</p>
-      </div>
-    </div>
-
-    <!-- Helpful Resources -->
-    <div class="resources">
-      <h2>Helpful Resources</h2>
-      <ul>
-        <li><a href="https://www.who.int/health-topics/mental-health" target="_blank">WHO - Mental Health</a></li>
-        <li><a href="https://www.nimh.nih.gov/health/topics" target="_blank">NIMH - Mental Health Topics</a></li>
-        <li><a href="https://www.mentalhealth.org.uk/" target="_blank">Mental Health Foundation</a></li>
-      </ul>
-    </div>
-
-    <!-- Back Button -->
-    <a href="index.html" class="back-btn">⬅ Back to Home</a>
-  </section>
+      <!-- Helpful Resources -->
+      <section class="resources">
+        <h2>Helpful Resources</h2>
+        <div class="resources-grid">
+          <div class="resource">
+            <h3>World Health Organization</h3>
+            <p>Global mental health information</p>
+            <a href="https://www.who.int/health-topics/mental-health" target="_blank">Visit</a>
+          </div>
+          <div class="resource">
+            <h3>National Institute of Mental Health</h3>
+            <p>Research and resources</p>
+            <a href="https://www.nimh.nih.gov/health/topics" target="_blank">Visit</a>
+          </div>
+          <div class="resource">
+            <h3>Mental Health Foundation</h3>
+            <p>UK-based support and information</p>
+            <a href="https://www.mentalhealth.org.uk/" target="_blank">Visit</a>
+          </div>
+          <div class="resource">
+            <h3>Mind</h3>
+            <p>Mental health charity</p>
+            <a href="https://www.mind.org.uk/" target="_blank">Visit</a>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
 
   <!-- Footer -->
   <footer class="footer">
-    <p>&copy; 2025 MindSpace. All rights reserved.</p>
+    <p>© 2025 MindCare. You are not alone 💚</p>
   </footer>
 
   <!-- External JS -->
